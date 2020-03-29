@@ -3,7 +3,7 @@ id: getting-started
 title: Getting Started
 ---
 
-Phone Service is the backend GraphQL api for the mobile app.
+Communities API is the backend GraphQL api for the mobile app.
 
 ## Pre-requisites
 

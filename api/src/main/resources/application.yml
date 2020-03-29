@@ -1,5 +1,5 @@
 graphql:
-  packages: "com.pyruby.phones"
+  packages: "com.pyruby.communities"
   subscriptions:
     # Send a ka message every 1000 ms (1 second)
     keepAliveInterval: 5000

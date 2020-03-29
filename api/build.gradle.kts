@@ -15,6 +15,9 @@ val mockkVersion: String by project
 dependencies {
     implementation("com.expediagroup:graphql-kotlin-spring-server:$graphqlVersion")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
+    implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
+    implementation("com.h2database:h2:1.4.200")
+    implementation("io.r2dbc:r2dbc-h2:0.8.2.RELEASE")
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testImplementation("io.projectreactor:reactor-test:$reactorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlinTestVersion")
@@ -41,7 +44,7 @@ tasks {
         classDirectories.setFrom(
             sourceSets.main.get().output.asFileTree.matching {
                 // exclude main()
-                exclude("com/pyruby/phones/ApplicationKt.class")
+                exclude("com/pyruby/communities/ApplicationKt.class")
             }
         )
     }

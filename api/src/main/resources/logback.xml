@@ -1,7 +1,7 @@
 <configuration>
     <appender name="JournalOut" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
-            <layout class="com.pyruby.phones.logging.JournalLayout">
+            <layout class="com.pyruby.communities.logging.JournalLayout">
                 <jsonFormatter class="ch.qos.logback.contrib.jackson.JacksonJsonFormatter"/>
             </layout>
         </encoder>
@@ -13,7 +13,7 @@
         </encoder>
     </appender>
 
-    <logger name="com.pyruby.phones.logging.LoggingInstrumentation" level="DEBUG">
+    <logger name="com.pyruby.communities.logging.LoggingInstrumentation" level="DEBUG">
         <appender-ref ref="JournalOut"/>
     </logger>
 

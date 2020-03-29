@@ -18,6 +18,6 @@ pluginManagement {
     }
 }
 
-rootProject.name = "phones"
+rootProject.name = "communities"
 
 include(":api")
