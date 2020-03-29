@@ -19,7 +19,7 @@ class LoggingInstrumentation : SimpleInstrumentation() {
         if (parameters != null) {
             val phoneContext = parameters.executionInput.context as UserContext
             val query = parameters.executionInput.query
-            return Journal(query = query, msisdn = phoneContext.msisdn, startTime = LocalDateTime.now())
+            return Journal(query = query, msisdn = phoneContext.username, startTime = LocalDateTime.now())
         }
         return Journal()
     }

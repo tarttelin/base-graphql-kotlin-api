@@ -7,6 +7,7 @@ import graphql.relay.Connection
 import graphql.relay.Relay
 import graphql.schema.*
 import graphql.schema.GraphQLFieldDefinition.newFieldDefinition
+import reactor.core.publisher.Mono
 import kotlin.reflect.KType
 import kotlin.reflect.jvm.javaType
 
@@ -20,6 +21,11 @@ class RelaySchemaHook(override val wiringFactory: KotlinDirectiveWiringFactory) 
         }
         return null
     }
+
+    override fun willResolveMonad(type: KType): KType = when (type.classifier) {
+        Mono::class -> type.arguments.firstOrNull()?.type
+        else -> type
+    } ?: type
 
     override fun willBuildSchema(builder: GraphQLSchema.Builder): GraphQLSchema.Builder {
         return builder.additionalType(Relay.pageInfoType)
