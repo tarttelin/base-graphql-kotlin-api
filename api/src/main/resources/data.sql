@@ -11,7 +11,7 @@ INSERT INTO MEMBER VALUES (1, 'Chris', 1, 'chris_t'),
                           (5, 'Alan', 2, 'al-da-man');
 
 INSERT INTO THING VALUES
-                         (1, 'Strong plain bread flour', 'Groceries', 1 ),
-                         (2, 'Dairy milk chocolate', 'Groceries', 3 ),
-                         (3, 'Cheese', 'Groceries', 4 ),
-                         (4, 'Prescription from Boots', 'Medicine', 5 );
+                         (1, 'Strong plain bread flour', '1.5KG', 'Groceries', 1 ),
+                         (2, 'Dairy milk chocolate', '100G bar', 'Groceries', 3 ),
+                         (3, 'Cheese', '200G', 'Groceries', 4 ),
+                         (4, 'Prescription from Boots', '1 item', 'Medicine', 5 );

@@ -3,14 +3,15 @@ package com.pyruby.communities.query
 import com.expediagroup.graphql.annotations.GraphQLContext
 import com.expediagroup.graphql.annotations.GraphQLDescription
 import com.expediagroup.graphql.spring.operations.Query
-import com.pyruby.communities.repository.CommunityRepository
 import com.pyruby.communities.context.UserContext
 import com.pyruby.communities.model.Community
 import com.pyruby.communities.model.Household
 import com.pyruby.communities.model.Member
+import com.pyruby.communities.model.Thing
+import com.pyruby.communities.repository.CommunityRepository
 import org.springframework.stereotype.Component
+import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-import java.time.Duration
 
 @Component
 class CommunityQuery(private val communityRepo: CommunityRepository) : Query {
@@ -36,8 +37,13 @@ class CommunityQuery(private val communityRepo: CommunityRepository) : Query {
         return null
     }
 
-    @GraphQLDescription("Lookup household")
+    @GraphQLDescription("Lookup member")
     fun member(@GraphQLContext context: UserContext): Member? {
+        return null
+    }
+
+    @GraphQLDescription("Members things")
+    fun things(@GraphQLContext context: UserContext): Flux<Thing>? {
         return null
     }
 }

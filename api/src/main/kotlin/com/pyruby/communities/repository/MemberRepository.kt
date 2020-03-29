@@ -6,6 +6,6 @@ import reactor.core.publisher.Flux
 
 interface MemberRepository : ReactiveCrudRepository<Member, Int> {
 
-    @Query("SELECT * FROM member WHERE householdId = $1")
+    @Query("SELECT * FROM member WHERE HOUSEHOLD_ID = :householdId")
     fun findByHouseholdId(householdId: Int) : Flux<Member>
 }

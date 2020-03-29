@@ -9,13 +9,13 @@ interface CommunityRepository: ReactiveCrudRepository<Community, Int> {
         SELECT *
         FROM community c
         WHERE c.id in (
-            SELECT communityId
+            SELECT COMMUNITY_ID
             FROM household h
-            WHERE h.communityId = c.id
+            WHERE h.COMMUNITY_ID = c.id
             AND id in (
-                SELECT communityId
+                SELECT COMMUNITY_ID
                 FROM member m
-                WHERE m.userId = :userId
+                WHERE m.USER_ID = :userId
             )
         )
     """)

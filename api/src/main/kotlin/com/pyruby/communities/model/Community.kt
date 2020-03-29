@@ -5,6 +5,7 @@ import com.expediagroup.graphql.annotations.GraphQLIgnore
 import com.pyruby.communities.*
 import com.pyruby.communities.resolvers.UseResolver
 import graphql.relay.Connection
+import reactor.core.publisher.Mono
 
 data class Community(@GraphQLID val id: String? = null,
                      val name: String) {
@@ -23,7 +24,7 @@ data class Household(@GraphQLID val id: String? = null,
 
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<HouseholdMembersResolver>(HouseholdMembersResolver::class)
-    fun members(): Connection<Member> {
+    fun members(): Mono<Connection<Member>> {
         throw resolverException(this::members)
     }
 }
@@ -32,12 +33,20 @@ data class Address(
     val nameOrNumber: String,
     val postcode: String)
 
-data class Member(@GraphQLID val id: String? = null, val name: Name, val needed: List<Thing>, @GraphQLIgnore val householdId: Int) {
+data class Member(@GraphQLID val id: String? = null, val name: Name, val userId: String, @GraphQLIgnore val householdId: Int) {
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<MemberHouseholdResolver>(MemberHouseholdResolver::class)
-    fun household(): Household {
+    fun household(): Mono<Household> {
         throw resolverException(this::household)
     }
+
+    @Suppress("UNUSED_PARAMETER")
+    @UseResolver<MemberThingsResolver>(MemberThingsResolver::class)
+    fun things(): Mono<Connection<Thing>> {
+        throw resolverException(this::things)
+    }
+
+
 }
 
 data class Name(val preferredName: String)
@@ -45,5 +54,5 @@ data class Name(val preferredName: String)
 data class Thing(val name: String, val quantity: String, val category: Category)
 
 enum class Category {
-    Food, Medicine, Other
+    Groceries, Medicine, Other
 }

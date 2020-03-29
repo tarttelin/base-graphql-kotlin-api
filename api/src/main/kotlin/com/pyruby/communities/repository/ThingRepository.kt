@@ -4,8 +4,9 @@ import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import reactor.core.publisher.Flux
 
-interface HouseholdRepository : ReactiveCrudRepository<Household, Int> {
+interface ThingRepository : ReactiveCrudRepository<Thing, Int> {
 
-    @Query("SELECT * FROM household WHERE COMMUNITY_ID = :communityId")
-    fun findByCommunityId(communityId: Int) : Flux<Household>
+    @Query("SELECT * FROM thing WHERE MEMBER_ID = :memberId")
+    fun findByMemberId(memberId: Int) : Flux<Thing>
+
 }
