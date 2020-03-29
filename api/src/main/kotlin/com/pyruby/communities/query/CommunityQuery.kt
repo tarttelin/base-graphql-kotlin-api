@@ -22,15 +22,8 @@ class CommunityQuery(private val communityRepo: CommunityRepository) : Query {
             .map { toModel(it) }
     }
 
-    private fun toModel(community: com.pyruby.communities.repository.Community?) =
-        if (community == null) {
-            println("*******  Community is null")
-            null
-        } else {
-            println("*******  Community is ${community.name}")
+    private fun toModel(community: com.pyruby.communities.repository.Community) =
             Community(community.id.toString(), community.name)
-        }
-
 
     @GraphQLDescription("Lookup household")
     fun household(@GraphQLContext context: UserContext): Household? {
