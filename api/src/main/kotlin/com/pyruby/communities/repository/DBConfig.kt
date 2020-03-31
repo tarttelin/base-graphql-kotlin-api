@@ -23,7 +23,7 @@ class DBConfig : AbstractR2dbcConfiguration() {
     fun transactionManager(connectionFactory: ConnectionFactory) = R2dbcTransactionManager(connectionFactory)
 
     @Bean
-    fun initializer(connectionFactory: ConnectionFactory) : ConnectionFactoryInitializer {
+    fun initializer(connectionFactory: ConnectionFactory): ConnectionFactoryInitializer {
         val populator = CompositeDatabasePopulator()
             .apply {
                 addPopulators(ResourceDatabasePopulator(ClassPathResource("schema.sql")))

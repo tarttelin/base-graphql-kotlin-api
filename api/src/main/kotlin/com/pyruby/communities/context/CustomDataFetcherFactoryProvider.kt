@@ -1,16 +1,13 @@
 package com.pyruby.communities.context
 
-import com.expediagroup.graphql.execution.FunctionDataFetcher
 import com.expediagroup.graphql.execution.SimpleKotlinDataFetcherFactoryProvider
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.pyruby.communities.resolvers.UseResolver
 import graphql.schema.DataFetcher
 import graphql.schema.DataFetcherFactory
 import graphql.schema.DataFetcherFactoryEnvironment
-import graphql.schema.DataFetchingEnvironment
 import org.springframework.beans.factory.BeanFactory
 import org.springframework.beans.factory.BeanFactoryAware
-import org.springframework.beans.factory.getBean
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Mono
 import kotlin.reflect.KAnnotatedElement
@@ -58,5 +55,4 @@ class MonoWrapper(private val delegate: DataFetcherFactory<Any?>) : DataFetcherF
             else -> result
         }
     }
-
 }

@@ -4,7 +4,7 @@ import org.springframework.data.r2dbc.repository.Query
 import org.springframework.data.repository.reactive.ReactiveCrudRepository
 import reactor.core.publisher.Mono
 
-interface CommunityRepository: ReactiveCrudRepository<Community, Int> {
+interface CommunityRepository : ReactiveCrudRepository<Community, Int> {
     @Query("""
         SELECT *
         FROM community c
@@ -20,5 +20,4 @@ interface CommunityRepository: ReactiveCrudRepository<Community, Int> {
         )
     """)
     fun findByUser(userId: String): Mono<Community>
-
 }

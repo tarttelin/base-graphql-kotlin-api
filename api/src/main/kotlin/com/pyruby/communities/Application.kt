@@ -13,7 +13,7 @@ class Application {
     fun wiringFactory() = KotlinDirectiveWiringFactory()
 
     @Bean
-    fun hooks(wiringFactory: KotlinDirectiveWiringFactory) =  RelaySchemaHook(wiringFactory)
+    fun hooks(wiringFactory: KotlinDirectiveWiringFactory) = RelaySchemaHook(wiringFactory)
 }
 
 fun main(args: Array<String>) {

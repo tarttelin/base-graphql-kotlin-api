@@ -5,29 +5,43 @@ import com.expediagroup.graphql.hooks.SchemaGeneratorHooks
 import graphql.Scalars
 import graphql.relay.Connection
 import graphql.relay.Relay
-import graphql.schema.*
 import graphql.schema.GraphQLFieldDefinition.newFieldDefinition
+import graphql.schema.GraphQLList
+import graphql.schema.GraphQLNonNull
+import graphql.schema.GraphQLObjectType
+import graphql.schema.GraphQLTypeReference
+import graphql.schema.GraphQLSchema.Builder
+import graphql.schema.GraphQLType
 import reactor.core.publisher.Mono
 import kotlin.reflect.KType
 import kotlin.reflect.jvm.javaType
 
 class RelaySchemaHook(override val wiringFactory: KotlinDirectiveWiringFactory) : SchemaGeneratorHooks {
 
+    private val generatedTypes = mutableMapOf<String, GraphQLType>()
+
     override fun willGenerateGraphQLType(type: KType): GraphQLType? {
         if (type.classifier == Connection::class) {
+            println("  Create connection type for ${type.javaType.typeName}")
             val typeName = type.javaType.typeName
-            val suffix = typeName.substring(typeName.lastIndexOf(".") + 1).removeSuffix(">")
-            return connectionType(suffix)
+            return if (generatedTypes.contains(typeName)) {
+                generatedTypes[typeName]
+            } else {
+                val suffix = typeName.substring(typeName.lastIndexOf(".") + 1).removeSuffix(">")
+                val gqlType = connectionType(suffix)
+                generatedTypes[typeName] = gqlType
+                gqlType
+            }
         }
         return null
     }
 
     override fun willResolveMonad(type: KType): KType = when (type.classifier) {
-        Mono::class -> type.arguments.firstOrNull()?.type
+        Mono::class -> type.arguments.first().type!!
         else -> type
-    } ?: type
+    }
 
-    override fun willBuildSchema(builder: GraphQLSchema.Builder): GraphQLSchema.Builder {
+    override fun willBuildSchema(builder: Builder): Builder {
         return builder.additionalType(Relay.pageInfoType)
     }
 }
