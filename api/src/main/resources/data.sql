@@ -5,15 +5,18 @@ DELETE FROM COMMUNITY;
 
 INSERT INTO community VALUES (1, 'Deans Farm'), (2, 'Amersham massiv');
 
-INSERT INTO household VALUES (1, '3', 'RG4 5JZ', 1);
-INSERT INTO household VALUES (2, '4', 'RG4 5JZ', 1);
+INSERT INTO household VALUES (1, '3', 'RG4 5JZ', 1),
+                             (2, '4', 'RG4 5JZ', 1),
+                             (3, '42', 'RG4 5NK', 2);
+
 
 
 INSERT INTO MEMBER VALUES (1, 'Chris', 1, 'chris_t'),
                           (2, 'Freya', 1, 'shipsmouse'),
                           (3, 'Jessica', 1, 'jessicat'),
                           (4, 'Mary', 2, 'mary-reed'),
-                          (5, 'Alan', 2, 'al-da-man');
+                          (5, 'Alan', 2, 'al-da-man'),
+                          (6, 'Kelsey', 3, 'kelz');
 
 INSERT INTO THING VALUES
                          (1, 'Strong plain bread flour', '1.5KG', 'Groceries', 1 ),

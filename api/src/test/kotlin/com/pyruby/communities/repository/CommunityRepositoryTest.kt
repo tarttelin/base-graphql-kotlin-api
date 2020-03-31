@@ -20,9 +20,9 @@ class CommunityRepositoryTest {
 
     @Test
     fun `load community by username of a member of that community`() {
-        val community = repo.findByUser("chris_t")
+        val community = repo.findByUser("kelz")
             .block()
-        community?.name `should equal` "Deans Farm"
+        community?.name `should equal` "Amersham massiv"
     }
 
     @Test

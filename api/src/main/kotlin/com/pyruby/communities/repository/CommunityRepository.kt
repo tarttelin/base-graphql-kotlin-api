@@ -12,8 +12,8 @@ interface CommunityRepository : ReactiveCrudRepository<Community, Int> {
             SELECT COMMUNITY_ID
             FROM household h
             WHERE h.COMMUNITY_ID = c.id
-            AND id in (
-                SELECT COMMUNITY_ID
+            AND h.id in (
+                SELECT HOUSEHOLD_ID
                 FROM member m
                 WHERE m.USER_ID = :userId
             )
