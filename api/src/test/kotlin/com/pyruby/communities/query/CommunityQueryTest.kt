@@ -56,7 +56,6 @@ class CommunityQueryTest(@Autowired private val testClient: WebTestClient) {
 }"""
         execute(query, expectedUser)
             .jsonPath("${"$"}.data.community.name").isEqualTo("Deans Farm")
-            .jsonPath("${"$"}.data.community.households.edges.length()").isEqualTo(2)
             .jsonPath("${"$"}.data.community.households.edges[0].node.members.edges[0].node.userId").isEqualTo("chris_t")
     }
 

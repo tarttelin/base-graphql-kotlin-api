@@ -1,5 +1,6 @@
 package com.pyruby.communities.model
 
+import com.expediagroup.graphql.annotations.GraphQLDescription
 import com.expediagroup.graphql.annotations.GraphQLID
 import com.expediagroup.graphql.annotations.GraphQLIgnore
 import com.pyruby.communities.resolvers.HouseholdMembersResolver
@@ -10,6 +11,7 @@ import com.pyruby.communities.resolvers.UseResolver
 import graphql.relay.Connection
 import reactor.core.publisher.Mono
 
+@GraphQLDescription("A group of households in the same area who look out for each other")
 data class Community(@GraphQLID val id: String, val name: String) {
 
     @Suppress("UNUSED_PARAMETER")
@@ -19,6 +21,7 @@ data class Community(@GraphQLID val id: String, val name: String) {
     }
 }
 
+@GraphQLDescription("The members of a household can only be members if they are app users.")
 data class Household(@GraphQLID val id: String, val address: Address) {
 
     @Suppress("UNUSED_PARAMETER")
@@ -30,6 +33,7 @@ data class Household(@GraphQLID val id: String, val address: Address) {
 
 data class Address(val nameOrNumber: String, val postcode: String)
 
+@GraphQLDescription("Members belong to a household and can list the things they need or offer help for others in the community")
 data class Member(@GraphQLID val id: String, val name: Name, val userId: String, @GraphQLIgnore val householdId: Int) {
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<MemberHouseholdResolver>(MemberHouseholdResolver::class)
@@ -46,7 +50,7 @@ data class Member(@GraphQLID val id: String, val name: Name, val userId: String,
 
 data class Name(val preferredName: String)
 
-data class Thing(val name: String, val quantity: String, val category: Category)
+data class Thing(@GraphQLID val id: String, val name: String, val quantity: String, val category: Category)
 
 enum class Category {
     Groceries, Medicine, Other

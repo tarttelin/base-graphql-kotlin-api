@@ -15,4 +15,4 @@ fun HouseholdDb.toView() =
     Household(id.toString(), Address(nameOrNumber, postcode))
 
 fun ThingDb.toView() =
-    Thing(name, quantity, Category.valueOf(category))
+    Thing(id!!.toString(), name, quantity, Category.valueOf(category))
