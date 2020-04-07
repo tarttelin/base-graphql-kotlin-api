@@ -11,8 +11,13 @@ import com.pyruby.communities.resolvers.UseResolver
 import graphql.relay.Connection
 import reactor.core.publisher.Mono
 
+interface Node {
+    @GraphQLID val id: String?
+
+}
+
 @GraphQLDescription("A group of households in the same area who look out for each other")
-data class Community(@GraphQLID val id: String, val name: String) {
+data class Community(@GraphQLID override val id: String, val name: String) : Node {
 
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<HouseholdsResolver>(HouseholdsResolver::class)
@@ -22,7 +27,7 @@ data class Community(@GraphQLID val id: String, val name: String) {
 }
 
 @GraphQLDescription("The members of a household can only be members if they are app users.")
-data class Household(@GraphQLID val id: String, val address: Address) {
+data class Household(@GraphQLID override val id: String, val address: Address) : Node {
 
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<HouseholdMembersResolver>(HouseholdMembersResolver::class)
@@ -34,7 +39,7 @@ data class Household(@GraphQLID val id: String, val address: Address) {
 data class Address(val nameOrNumber: String, val postcode: String)
 
 @GraphQLDescription("Members belong to a household and can list the things they need or offer help for others in the community")
-data class Member(@GraphQLID val id: String, val name: Name, val userId: String, @GraphQLIgnore val householdId: Int) {
+data class Member(@GraphQLID override val id: String, val name: Name, val userId: String, @GraphQLIgnore val householdId: Int) : Node {
     @Suppress("UNUSED_PARAMETER")
     @UseResolver<MemberHouseholdResolver>(MemberHouseholdResolver::class)
     fun household(): Mono<Household> {
@@ -50,7 +55,7 @@ data class Member(@GraphQLID val id: String, val name: Name, val userId: String,
 
 data class Name(val preferredName: String)
 
-data class Thing(@GraphQLID val id: String, val name: String, val quantity: String, val category: Category)
+data class Thing(@GraphQLID override val id: String, val name: String, val quantity: String, val category: Category) : Node
 
 enum class Category {
     Groceries, Medicine, Other
