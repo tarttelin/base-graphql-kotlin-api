@@ -13,7 +13,6 @@ import reactor.core.publisher.Mono
 
 interface Node {
     @GraphQLID val id: String?
-
 }
 
 @GraphQLDescription("A group of households in the same area who look out for each other")

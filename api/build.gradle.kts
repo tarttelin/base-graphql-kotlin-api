@@ -14,11 +14,15 @@ val mockkVersion: String by project
 
 dependencies {
     implementation("com.expediagroup:graphql-kotlin-spring-server:$graphqlVersion")
+    implementation("javax.servlet:javax.servlet-api:3.1.0")
     implementation("ch.qos.logback.contrib:logback-jackson:0.1.5")
+    // Persistence
     implementation("org.springframework.data:spring-data-r2dbc:1.0.0.RELEASE")
     implementation("com.h2database:h2:1.4.200")
     implementation("io.r2dbc:r2dbc-h2:0.8.2.RELEASE")
-    implementation("javax.servlet:javax.servlet-api:3.1.0")
+    // Auth
+    implementation("com.google.api-client:google-api-client:1.30.5")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test:$springBootVersion")
     testImplementation("io.projectreactor:reactor-test:$reactorVersion")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:$kotlinTestVersion")

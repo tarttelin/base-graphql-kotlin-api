@@ -3,3 +3,4 @@ graphql:
   subscriptions:
     # Send a ka message every 1000 ms (1 second)
     keepAliveInterval: 5000
+client_id: "544747691174-9qoh28tnghgs77ohcv5ssisqkci4gvse.apps.googleusercontent.com"
