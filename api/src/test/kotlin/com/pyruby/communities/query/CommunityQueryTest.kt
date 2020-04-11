@@ -60,6 +60,14 @@ class CommunityQueryTest(@Autowired private val testClient: WebTestClient) {
     }
 
     @Test
+    fun `find community for a user that does not have a community should return an empty community`() {
+        val expectedUser = "new_user"
+        val query = " query { community { id, name } }"
+        execute(query, expectedUser)
+            .jsonPath("${"$"}.data.community").isEmpty
+    }
+
+    @Test
     fun `find household by userId`() {
         val query = "query { household { address { postcode } } }"
         execute(query, "shipsmouse")

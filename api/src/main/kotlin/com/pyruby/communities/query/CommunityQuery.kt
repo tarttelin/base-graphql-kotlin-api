@@ -28,7 +28,7 @@ class CommunityQuery(
 ) : Query {
 
     @GraphQLDescription("Lookup community")
-    fun community(@GraphQLContext context: UserContext): Mono<Community> {
+    fun community(@GraphQLContext context: UserContext): Mono<Community?> {
         return communityRepo.findByUser(context.username)
             .map { it.toView() }
     }

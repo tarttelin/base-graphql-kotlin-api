@@ -26,6 +26,13 @@ class CommunityRepositoryTest {
     }
 
     @Test
+    fun `load community by username of a member that has no community`() {
+        val community = repo.findByUser("unknown_user")
+            .block()
+        community?.name `should equal` null
+    }
+
+    @Test
     fun `saved communities are given an id`() {
         val community = Community(null, "Some place nice")
         val savedCommunity = repo.save(community).block()!!
