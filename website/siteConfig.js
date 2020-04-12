@@ -2,10 +2,10 @@
 const siteConfig = {
   title: 'Phone service',
   tagline: 'GraphQL api for MyO2 Business',
-  url: 'https://fubar.github.io',
-  baseUrl: '/phone-service/',
-  projectName: 'phone-service',
-  organizationName: 'Fubar Industries',
+  url: 'https://tarttelin.github.io',
+  baseUrl: '/communities-service/',
+  projectName: 'communities-service',
+  organizationName: 'PyRuby Industries',
   headerLinks: [
     { search: false },
     { doc: 'getting-started', label: 'Docs' },
