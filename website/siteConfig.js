@@ -1,11 +1,11 @@
 
 const siteConfig = {
-  title: 'Phone service',
-  tagline: 'GraphQL api for MyO2 Business',
+  title: 'communities service',
+  tagline: 'GraphQL api for communities',
   url: 'https://tarttelin.github.io',
-  baseUrl: '/communities-service/',
-  projectName: 'communities-service',
-  organizationName: 'PyRuby Industries',
+  baseUrl: '/base-graphql-kotlin-api/',
+  projectName: 'base-graphql-kotlin-api',
+  organizationName: 'tarttelin',
   headerLinks: [
     { search: false },
     { doc: 'getting-started', label: 'Docs' },
