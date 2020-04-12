@@ -78,7 +78,8 @@ subprojects {
     }
 }
 
-tasks.register<org.gradle.testing.jacoco.tasks.JacocoReport>("codeCoverageReport") {
+// Code coverage results pushed to codecov.io need to be in xml format
+tasks.register<JacocoReport>("codeCoverageReport") {
     executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
 
     subprojects.forEach {

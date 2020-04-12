@@ -7,7 +7,8 @@ Communities API is the backend GraphQL api for the mobile app.
 
 ## Pre-requisites
 
-Depends on integrating with an OIDC to deliver auth credentials
+Uses Google authentication so requires the client_id token to be configured both on the
+backend and in the app
 
 ## Running locally
 
