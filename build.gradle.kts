@@ -78,6 +78,21 @@ subprojects {
     }
 }
 
+tasks.register<org.gradle.testing.jacoco.tasks.JacocoReport>("codeCoverageReport") {
+    executionData(fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec"))
+
+    subprojects.forEach {
+        sourceSets(it.sourceSets.main.orNull)
+    }
+
+    reports {
+        xml.isEnabled = true
+        xml.destination = file("$buildDir/reports/jacoco/report.xml")
+        html.isEnabled = false
+        csv.isEnabled = false
+    }
+}
+
 tasks {
     jar {
         enabled = false
