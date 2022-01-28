@@ -8,6 +8,10 @@ pom.xml.versionsBackup
 .gradle
 build/
 out/
+api/bin/
+node_modules/
+i18n/
+
 
 # Ignore Gradle GUI config
 gradle-app.setting

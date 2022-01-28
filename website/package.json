@@ -2,8 +2,8 @@
   "name": "phone-service-docs",
   "license": "Apache-2.0",
   "engines": {
-    "node": "12",
-    "npm": "6"
+    "node": "16",
+    "npm": "8"
   },
   "scripts": {
     "examples": "docusaurus-examples",
@@ -16,8 +16,8 @@
     "clean": "rimraf build i18n"
   },
   "devDependencies": {
-    "docusaurus": "1.14.4",
-    "mermaid": "^8.13.8",
+    "docusaurus": "^1.14.7",
+    "mermaid": "^8.13.10",
     "rimraf": "3.0.2"
   }
 }
