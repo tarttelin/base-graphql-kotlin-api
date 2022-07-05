@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "docusaurus": "^1.14.7",
-    "mermaid": "^8.13.10",
+    "mermaid": "^9.1.2",
     "rimraf": "3.0.2"
   }
 }
